@@ -24,7 +24,7 @@ copyButton.addEventListener('click', () => {
 });
 
 function generatePassword(name) {
-    const content = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const content = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*()';
     const shuffledContent = shuffleString(content);
 
     const nameLength = Math.ceil(name.length * 0.75); // Change the factor to control the amount of name included
