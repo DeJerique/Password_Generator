@@ -1,0 +1,77 @@
+body {
+    background-color: black;
+    justify-content: center;
+}
+
+/* Styles for the password generator */
+.password-generator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.generate-button:hover{
+    background-color: red;
+    font-style: italic;
+}
+.copy-button:hover{
+    background-color: red;
+    font-style: italic;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.password-input {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    background-color: brown;
+}
+
+.generate-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px !important;
+    font-weight: bolder;
+}
+
+.copy-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.generate-button {
+    background-color: chartreuse;
+    color: white;
+    border-radius: 60px;
+    color: rgb(86, 18, 197);
+}
+
+.copy-button {
+    background-color: chartreuse;
+    color: white;
+    border-radius: 60px;
+    color: rgb(86, 18, 197);
+}
+.card-title {
+    font-weight: bold;
+    font-size: 30px;
+}
+.card{
+    width: 700px;
+    align-items: center;
+    border-width: 6px;
+    border-style: dashed;
+    border-color: maroon;
+    background-color: orange;
+}
+.container{
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+}
