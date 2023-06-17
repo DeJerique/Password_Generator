@@ -4,7 +4,7 @@ const copyButton = document.querySelector('.copy-button');
 
 // Show welcome message
 window.addEventListener('load', () => {
-    alert('Welcome! Please enter your name to generate a password.');
+    alert('Welcome! please click on the Button to generate a password.');
 });
 
 generateButton.addEventListener('click', () => {
