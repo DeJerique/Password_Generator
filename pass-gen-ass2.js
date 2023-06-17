@@ -1,67 +1,61 @@
-// const passwordInput = document.querySelector('.password-input');
-// const generateButton = document.querySelector('.generate-button');
-// const copyButton = document.querySelector('.copy-button');
-
-// generateButton.addEventListener('click', () => {
-//     const generatedPassword = generatePassword();
-//     passwordInput.value = generatedPassword;
-//     setTimeout(() => {
-//         alert('Password generated!. Do you want to copy it?');
-//       }, 5000);
-// });
-
-// copyButton.addEventListener('click', () => {
-//     passwordInput.select();
-//     passwordInput.setSelectionRange(0, 99999);
-//     document.execCommand('copy');
-//     copyButton.textContent = 'Copied!';
-//     alert("Password Copied!")
-//     setTimeout(() => {
-//         copyButton.textContent = 'Copy';
-//     }, 2000);
-// });
-
-// function generatePassword(length = 12) {
-//     const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-//     let password = '';
-
-//     for (let i = 0; i < length; i++) {
-//         const randomIndex = Math.floor(Math.random() * charset.length);
-//         password += charset[randomIndex];
-//     }
-
-//     return password;
-// }
-
 const passwordInput = document.querySelector('.password-input');
 const generateButton = document.querySelector('.generate-button');
 const copyButton = document.querySelector('.copy-button');
 
+// Show welcome message
+window.addEventListener('load', () => {
+    alert('Welcome! Please enter your name to generate a password.');
+});
+
 generateButton.addEventListener('click', () => {
-    const generatedPassword = generatePassword();
-    passwordInput.value = generatedPassword;
-    setTimeout(() => {
-        copyPassword();
-    }, 3000);
+    const name = prompt('Please enter your name:');
+
+    if (name) {
+        const generatedPassword = generatePassword(name);
+        passwordInput.value = generatedPassword;
+        showConfirmation('Password generated. Do you want to copy it?', () => {
+            copyPassword(generatedPassword);
+        });
+    }
 });
 
 copyButton.addEventListener('click', () => {
-    copyPassword();
+    copyPassword(passwordInput.value);
 });
 
-function generatePassword(length = 12) {
-    const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let password = '';
+function generatePassword(name) {
+    const content = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const shuffledContent = shuffleString(content);
 
-    for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * charset.length);
-        password += charset[randomIndex];
-    }
+    const nameLength = Math.ceil(name.length * 0.75); // Change the factor to control the amount of name included
+    const shuffledName = shuffleString(name.substring(0, nameLength));
 
+    const password = shuffledName + shuffledContent.substring(0, 7);
     return password;
 }
 
-function copyPassword() {
+function shuffleString(string) {
+    let shuffledString = '';
+    const chars = string.split('');
+
+    while (chars.length > 0) {
+        const randomIndex = Math.floor(Math.random() * chars.length);
+        shuffledString += chars.splice(randomIndex, 1)[0];
+    }
+
+    return shuffledString;
+}
+
+
+
+function showConfirmation(message, callback) {
+    if (confirm(message)) {
+        callback();
+    }
+}
+
+function copyPassword(password) {
+    passwordInput.value = password;
     passwordInput.select();
     passwordInput.setSelectionRange(0, 99999);
     document.execCommand('copy');
@@ -70,4 +64,5 @@ function copyPassword() {
         copyButton.textContent = 'Copy Password';
     }, 2000); // Reset button text after 2 seconds
 }
+
 
